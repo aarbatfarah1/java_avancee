@@ -44,12 +44,16 @@ public class AlertAndRecommendationServiceImpl implements AlertAndRecommendation
     */
         Double value = 0.0;
         try {
-            value = Double.valueOf(data.replace(',', '.'));
+            // Preprocess the data: Replace commas with dots for decimal parsing and trim whitespace
+            data = data.replace(',', '.').trim();
+            // Attempt to parse the cleaned data
+            value = Double.valueOf(data);
         } catch (Exception e) {
-            LOGGER.log(Level.WARNING, "Error parsing heart rate value: " + e.getMessage());
+            // Log the error with the raw data for debugging purposes
+            LOGGER.log(Level.WARNING, "Error parsing heart rate value: " + data + ". Exception: " + e.getMessage());
         }
 
-        // Example logic for heart rate alerts and recommendations for diabetes
+        // Logic for determining heart rate alerts and recommendations
         if (value < 60) {
             this.heartRateAlertMessage = "!!!- Rythme cardiaque trop bas";
             this.heartRateRecommendationMessage = "-> Le rythme cardiaque est trop bas:  a: Repos et relaxation.  b: Hydratation suffisante.";
@@ -61,21 +65,22 @@ public class AlertAndRecommendationServiceImpl implements AlertAndRecommendation
             this.heartRateRecommendationMessage = "-> Le rythme cardiaque est normal.";
         }
 
+        // Print and return the alert and recommendation messages
         System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         System.out.println(heartRateAlertMessage + "\n\"\"\"\n" + heartRateRecommendationMessage);
         return heartRateAlertMessage + "\n\"\"\"\n" + heartRateRecommendationMessage;
     }
 
 
-    @KafkaListener(topics="bloodpressureAlert", groupId="groupId")
+
+    @KafkaListener(topics = "bloodpressureAlert", groupId = "groupId")
     public String getBloodPressureAlertAndRecommendation(String data) {
-    /*
-    """
-    Les recommandations pour la pression artérielle varient en fonction de plusieurs facteurs tels que l'âge, le sexe et l'état de santé général.
-    """
-    */
         Double value = 0.0;
         try {
+            // Remove the prefix and trim the string
+            if (data.startsWith("Systolic:")) {
+                data = data.replace("Systolic:", "").trim();
+            }
             value = Double.valueOf(data.replace(',', '.'));
         } catch (Exception e) {
             LOGGER.log(Level.WARNING, "Error parsing blood pressure value: " + e.getMessage());
@@ -99,6 +104,7 @@ public class AlertAndRecommendationServiceImpl implements AlertAndRecommendation
     }
 
 
+
     @KafkaListener(topics="temperatureAlert", groupId="groupId")
     public String getBodyTemperatureAlertAndRecommendation(String data) {
     /*
@@ -108,27 +114,33 @@ public class AlertAndRecommendationServiceImpl implements AlertAndRecommendation
     */
         Double value = 0.0;
         try {
-            value = Double.valueOf(data.replace(',', '.'));
+            // Preprocess the data: Replace commas with dots for decimal parsing and trim whitespace
+            data = data.replace(',', '.').trim();
+            // Attempt to parse the cleaned data
+            value = Double.valueOf(data);
         } catch (Exception e) {
-            LOGGER.log(Level.WARNING, "Error parsing body temperature value: " + e.getMessage());
+            // Log the error with the raw data for debugging purposes
+            LOGGER.log(Level.WARNING, "Error parsing body temperature value: " + data + ". Exception: " + e.getMessage());
         }
 
-        // Example logic for body temperature alerts and recommendations
+        // Logic for determining body temperature alerts and recommendations
         if (value < 36.1) {
             this.bodyTemperatureAlertMessage = "!!!- Température corporelle trop basse";
-            this.bodyTemperatureRecommendationMessage = "-> La température corporelle est trop basse:"+" "+" "+"a: Portez des vêtements chauds.  b: Restez à l'intérieur dans un endroit chaud.";
+            this.bodyTemperatureRecommendationMessage = "-> La température corporelle est trop basse:  a: Portez des vêtements chauds.  b: Restez à l'intérieur dans un endroit chaud.";
         } else if (value > 37.2) {
             this.bodyTemperatureAlertMessage = "!!!- Température corporelle trop élevée";
-            this.bodyTemperatureRecommendationMessage = "-> La température corporelle est trop élevée:"+" "+" "+"a: Restez hydraté.  b: Prenez des médicaments pour réduire la fièvre.  c: Consultez un médecin si la fièvre persiste.";
+            this.bodyTemperatureRecommendationMessage = "-> La température corporelle est trop élevée:  a: Restez hydraté.  b: Prenez des médicaments pour réduire la fièvre.  c: Consultez un médecin si la fièvre persiste.";
         } else {
             this.bodyTemperatureAlertMessage = "Température corporelle normale";
             this.bodyTemperatureRecommendationMessage = "-> La température corporelle est normale.";
         }
 
+        // Print and return the alert and recommendation messages
         System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         System.out.println(bodyTemperatureAlertMessage + "\n\"\"\"\n" + bodyTemperatureRecommendationMessage);
         return bodyTemperatureAlertMessage + "\n\"\"\"\n" + bodyTemperatureRecommendationMessage;
     }
+
 
     @KafkaListener(topics="oxygensaturationAlert", groupId="groupId")
     public String getOxygenSaturationAlertAndRecommendation(String data) {
@@ -139,12 +151,16 @@ public class AlertAndRecommendationServiceImpl implements AlertAndRecommendation
     */
         Double value = 0.0;
         try {
-            value = Double.valueOf(data.replace(',', '.'));
+            // Preprocess the data: Replace commas with dots for decimal parsing and trim whitespace
+            data = data.replace(',', '.').trim();
+            // Attempt to parse the cleaned data
+            value = Double.valueOf(data);
         } catch (Exception e) {
-            LOGGER.log(Level.WARNING, "Error parsing oxygen saturation value: " + e.getMessage());
+            // Log the error with the raw data for debugging purposes
+            LOGGER.log(Level.WARNING, "Error parsing oxygen saturation value: " + data + ". Exception: " + e.getMessage());
         }
 
-        // Exemple de logique pour les alertes et les recommandations de saturation en oxygène
+        // Logic for determining oxygen saturation alerts and recommendations
         if (value < 90.0) {
             this.oxygenSaturationAlertMessage = "!!!- Saturation en oxygène trop basse";
             this.oxygenSaturationRecommendationMessage = "-> La saturation en oxygène est trop basse:  a: Respirez profondément et lentement.  b: Utilisez un concentrateur d'oxygène si disponible.  c: Consultez un médecin si la saturation reste basse.";
@@ -156,10 +172,12 @@ public class AlertAndRecommendationServiceImpl implements AlertAndRecommendation
             this.oxygenSaturationRecommendationMessage = "-> La saturation en oxygène est normale.";
         }
 
+        // Print and return the alert and recommendation messages
         System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         System.out.println(oxygenSaturationAlertMessage + "\n\"\"\"\n" + oxygenSaturationRecommendationMessage);
         return oxygenSaturationAlertMessage + "\n\"\"\"\n" + oxygenSaturationRecommendationMessage;
     }
+
 
 
     @Override
