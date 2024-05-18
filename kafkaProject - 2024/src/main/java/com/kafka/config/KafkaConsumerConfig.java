@@ -1,5 +1,4 @@
 package com.kafka.config;
-
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
@@ -16,7 +15,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
-
 @Component
 @Configuration
 public class KafkaConsumerConfig {
@@ -29,12 +27,10 @@ public class KafkaConsumerConfig {
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringSerializer.class);
         return props;
     }
-
     @Bean
     public ConsumerFactory<String, String> consumerFactory(){
         return new DefaultKafkaConsumerFactory<>(consumerConfig());
     }
-
     public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String,String>> factory(ConsumerFactory<String,String> consumerFactory){
         ConcurrentKafkaListenerContainerFactory<String,String> factory= new ConcurrentKafkaListenerContainerFactory();
         factory.setConsumerFactory(consumerFactory);

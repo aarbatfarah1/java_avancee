@@ -5,14 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RequestMapping("/kafka")
 @RestController
 public class MessageController {
-
     @Autowired
     KafkaListeners listener;
-
     @Autowired
     AlertAndRecommendationServiceImpl alertAndRecommendationManager;
 

@@ -15,9 +15,7 @@ public class HeartRateSensor implements Sensor {
     public final String unit;
     public final String alertTopic;
     public Date date;
-
     private final KafkaTemplate<String, String> kafkaTemplate;
-
     public HeartRateSensor(KafkaTemplate<String, String> kafkaTemplate) {
         this.topicName = "heartrate";
         this.sensorType = "HEARTRATE";
@@ -25,17 +23,14 @@ public class HeartRateSensor implements Sensor {
         this.unit = "bpm";
         this.kafkaTemplate = kafkaTemplate;
     }
-
     @Override
     public String getData() {
         return this.toString();
     }
-
     @Override
     public String getSensorType() {
         return sensorType;
     }
-
     @Override
     public String toString() {
         return "{Type de capteur: " + this.sensorType + ", Valeur: " + String.format("%.2f", this.heartRateValue) + ", Unité: " + this.unit  + " Date: " + this.date +"}";

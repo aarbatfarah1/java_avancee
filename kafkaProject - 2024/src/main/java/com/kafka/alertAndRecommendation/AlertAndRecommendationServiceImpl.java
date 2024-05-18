@@ -1,5 +1,4 @@
 package com.kafka.alertAndRecommendation;
-
 import com.kafka.config.KafkaConsumerConfig;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
@@ -9,39 +8,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 @WebService(endpointInterface = "com.kafka.alertAndRecommendation.AlertAndRecommendationService")
 @Service
 public class AlertAndRecommendationServiceImpl implements AlertAndRecommendationService {
-
     private static final Logger LOGGER = Logger.getLogger(AlertAndRecommendationServiceImpl.class.getName());
-
     private String heartRateAlertMessage;
     private String bloodPressureAlertMessage;
     private String bodyTemperatureAlertMessage;
     private String oxygenSaturationAlertMessage;
-
     private String heartRateRecommendationMessage;
     private String bloodPressureRecommendationMessage;
     private String bodyTemperatureRecommendationMessage;
     private String oxygenSaturationRecommendationMessage;
-
     private List<String> alerts;
     private List<String> recommendations;
-
     private final KafkaConsumerConfig kcc;
-
     public AlertAndRecommendationServiceImpl() {
         this.kcc=new KafkaConsumerConfig();
     }
-
     @KafkaListener(topics="heartrateAlert", groupId="groupId")
     public String getHeartRateAlertAndRecommendation(String data) {
-    /*
-    """
-    Les recommandations pour le rythme cardiaque dans le cas du diabète varient en fonction de l'état de santé du patient.
-    """
-    */
+
         Double value = 0.0;
         try {
             // Preprocess the data: Replace commas with dots for decimal parsing and trim whitespace
