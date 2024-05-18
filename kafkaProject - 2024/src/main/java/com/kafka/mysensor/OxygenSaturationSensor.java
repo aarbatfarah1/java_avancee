@@ -38,7 +38,7 @@ public class OxygenSaturationSensor implements Sensor {
 
     @Override
     public String toString() {
-        return "{Date: " + this.date + ", Sensor type: " + this.sensorType + ", Value: " + String.format("%.2f", this.oxygenSaturationValue) + " " + this.unit + "}";
+        return "{Type de capteur : " + this.sensorType + ", Valeur: " + String.format("%.2f", this.oxygenSaturationValue) + " " + this.unit + " Date: " + this.date + "}";
     }
 
     public void generateData() {

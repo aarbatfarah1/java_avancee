@@ -38,7 +38,7 @@ public class HeartRateSensor implements Sensor {
 
     @Override
     public String toString() {
-        return "{Date: " + this.date + ", Sensor type: " + this.sensorType + ", Value: " + String.format("%.2f", this.heartRateValue) + ", Unit: " + this.unit + "}";
+        return "{Type de capteur: " + this.sensorType + ", Valeur: " + String.format("%.2f", this.heartRateValue) + ", Unité: " + this.unit  + " Date: " + this.date +"}";
     }
 
     public void generateData() {

@@ -39,7 +39,7 @@ public class BloodPressureSensor implements Sensor {
 
     @Override
     public String toString() {
-        return "{Date: " + this.date + ", Sensor type: " + this.sensorType + ", Systolic Pressure: " + String.format("%.2f", this.systolicPressure) + " " + this.unit + "}";
+        return "{Type de capteur: " + this.sensorType + ",Pression Systolic: " + String.format("%.2f", this.systolicPressure) + " " + this.unit + " Date: " + this.date +"}";
     }
 
     public void generateData() {

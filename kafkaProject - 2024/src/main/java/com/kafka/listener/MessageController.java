@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/kafka-api-v1")
+@RequestMapping("/kafka")
 @RestController
 public class MessageController {
 
@@ -16,7 +16,7 @@ public class MessageController {
     @Autowired
     AlertAndRecommendationServiceImpl alertAndRecommendationManager;
 
-    @GetMapping("/messages")
+    @GetMapping("/generatedData")
     @ResponseBody
     public List<String> getMessages() {
         return listener.getMessages();
@@ -29,7 +29,7 @@ public class MessageController {
         return alerts;
     }
 
-    @GetMapping("/recommendations")
+    @GetMapping("/recommandations")
     @ResponseBody
     public List<String> getRecommendations(){
         List<String> recommendations=alertAndRecommendationManager.getRecommendations();

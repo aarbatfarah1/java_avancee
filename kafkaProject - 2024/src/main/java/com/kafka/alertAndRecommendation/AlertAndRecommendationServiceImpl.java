@@ -56,22 +56,22 @@ public class AlertAndRecommendationServiceImpl implements AlertAndRecommendation
         // Logic for determining heart rate alerts and recommendations
         // Logique pour déterminer les alertes et les recommandations du rythme cardiaque
         if (value < 60) {
-            this.heartRateAlertMessage = "!!!- Rythme cardiaque trop bas";
+            this.heartRateAlertMessage = "Rythme cardiaque trop bas";
             this.heartRateRecommendationMessage = "-> Le rythme cardiaque est trop bas: ";
-            this.heartRateRecommendationMessage += "\n   a: Reposez-vous et prenez des moments de relaxation.";
-            this.heartRateRecommendationMessage += "\n   b: Assurez-vous d'une hydratation suffisante.";
-            this.heartRateRecommendationMessage += "\n   c: Évitez les activités physiques intenses.";
+            this.heartRateRecommendationMessage += " - Reposez-vous et prenez des moments de relaxation.";
+            this.heartRateRecommendationMessage += " - Assurez-vous d'une hydratation suffisante.";
+            this.heartRateRecommendationMessage += " - vitez les activités physiques intenses.";
         } else if (value > 100) {
-            this.heartRateAlertMessage = "!!!- Rythme cardiaque trop élevé";
+            this.heartRateAlertMessage = "Rythme cardiaque trop élevé";
             this.heartRateRecommendationMessage = "-> Le rythme cardiaque est trop élevé: ";
-            this.heartRateRecommendationMessage += "\n   a: Reposez-vous et prenez des moments de relaxation.";
-            this.heartRateRecommendationMessage += "\n   b: Consultez un médecin si cela persiste.";
-            this.heartRateRecommendationMessage += "\n   c: Limitez la consommation de caféine et de stimulants.";
+            this.heartRateRecommendationMessage += " - Reposez-vous et prenez des moments de relaxation.";
+            this.heartRateRecommendationMessage += " - Consultez un médecin si cela persiste.";
+            this.heartRateRecommendationMessage += " - Limitez la consommation de caféine et de stimulants.";
         } else {
             this.heartRateAlertMessage = "Rythme cardiaque dans la plage normale";
             this.heartRateRecommendationMessage = "-> Le rythme cardiaque est normal.";
-            this.heartRateRecommendationMessage += "\n   a: Continuez de maintenir un mode de vie sain.";
-            this.heartRateRecommendationMessage += "\n   b: Pratiquez une activité physique régulière.";
+            this.heartRateRecommendationMessage += " - Continuez de maintenir un mode de vie sain.";
+            this.heartRateRecommendationMessage += " - ratiquez une activité physique régulière.";
         }
 
 
@@ -99,24 +99,24 @@ public class AlertAndRecommendationServiceImpl implements AlertAndRecommendation
         // Example logic for blood pressure alerts and recommendations
         // Logique pour déterminer les alertes et les recommandations de la pression artérielle
         if (value < 90) {
-            this.bloodPressureAlertMessage = "!!!- Pression artérielle trop basse";
+            this.bloodPressureAlertMessage = "Pression artérielle trop basse";
             this.bloodPressureRecommendationMessage = "-> La pression artérielle est trop basse: ";
-            this.bloodPressureRecommendationMessage += "\n   a: Augmentez votre apport en sel.";
-            this.bloodPressureRecommendationMessage += "\n   b: Buvez plus d'eau.";
-            this.bloodPressureRecommendationMessage += "\n   c: Consultez un médecin si cela persiste.";
+            this.bloodPressureRecommendationMessage += " - Augmentez votre apport en sel.";
+            this.bloodPressureRecommendationMessage += " - Buvez plus d'eau.";
+            this.bloodPressureRecommendationMessage += " - Consultez un médecin si cela persiste.";
         } else if (value > 140) {
-            this.bloodPressureAlertMessage = "!!!- Pression artérielle trop élevée";
+            this.bloodPressureAlertMessage = "Pression artérielle trop élevée";
             this.bloodPressureRecommendationMessage = "-> La pression artérielle est trop élevée: ";
-            this.bloodPressureRecommendationMessage += "\n   a: Limitez votre consommation de sel.";
-            this.bloodPressureRecommendationMessage += "\n   b: Faites de l'exercice régulièrement.";
-            this.bloodPressureRecommendationMessage += "\n   c: Réduisez le stress et la tension.";
-            this.bloodPressureRecommendationMessage += "\n   d: Consultez un médecin pour un suivi.";
+            this.bloodPressureRecommendationMessage += " - Limitez votre consommation de sel.";
+            this.bloodPressureRecommendationMessage += " - Faites de l'exercice régulièrement.";
+            this.bloodPressureRecommendationMessage += " - Réduisez le stress et la tension.";
+            this.bloodPressureRecommendationMessage += " - Consultez un médecin pour un suivi.";
         } else {
             this.bloodPressureAlertMessage = "Pression artérielle dans la plage normale";
             this.bloodPressureRecommendationMessage = "-> La pression artérielle est normale.";
-            this.bloodPressureRecommendationMessage += "\n   a: Continuez de surveiller régulièrement votre tension.";
-            this.bloodPressureRecommendationMessage += "\n   b: Adoptez une alimentation équilibrée et faible en sel.";
-            this.bloodPressureRecommendationMessage += "\n   c: Pratiquez des techniques de gestion du stress.";
+            this.bloodPressureRecommendationMessage += " - Continuez de surveiller régulièrement votre tension.";
+            this.bloodPressureRecommendationMessage += " - doptez une alimentation équilibrée et faible en sel.";
+            this.bloodPressureRecommendationMessage += " - ratiquez des techniques de gestion du stress.";
         }
 
 
@@ -148,24 +148,24 @@ public class AlertAndRecommendationServiceImpl implements AlertAndRecommendation
         // Logic for determining body temperature alerts and recommendations
         // Logique pour déterminer les alertes et les recommandations de la température corporelle
         if (value < 36.1) {
-            this.bodyTemperatureAlertMessage = "!!!- Température corporelle trop basse";
+            this.bodyTemperatureAlertMessage = "Température corporelle trop basse";
             this.bodyTemperatureRecommendationMessage = "-> La température corporelle est trop basse: ";
-            this.bodyTemperatureRecommendationMessage += "\n   a: Portez des vêtements chauds.";
-            this.bodyTemperatureRecommendationMessage += "\n   b: Restez à l'intérieur dans un endroit chaud.";
-            this.bodyTemperatureRecommendationMessage += "\n   c: Surveillez régulièrement votre température.";
+            this.bodyTemperatureRecommendationMessage += " - Portez des vêtements chauds.";
+            this.bodyTemperatureRecommendationMessage += " - Restez à l'intérieur dans un endroit chaud.";
+            this.bodyTemperatureRecommendationMessage += " - Surveillez régulièrement votre température.";
         } else if (value > 37.2) {
-            this.bodyTemperatureAlertMessage = "!!!- Température corporelle trop élevée";
+            this.bodyTemperatureAlertMessage = "Température corporelle trop élevée";
             this.bodyTemperatureRecommendationMessage = "-> La température corporelle est trop élevée: ";
-            this.bodyTemperatureRecommendationMessage += "\n   a: Restez hydraté.";
-            this.bodyTemperatureRecommendationMessage += "\n   b: Prenez des médicaments pour réduire la fièvre.";
-            this.bodyTemperatureRecommendationMessage += "\n   c: Appliquez des compresses froides sur le front et les aisselles.";
-            this.bodyTemperatureRecommendationMessage += "\n   d: Consultez un médecin si la fièvre persiste.";
+            this.bodyTemperatureRecommendationMessage += " - Restez hydraté.";
+            this.bodyTemperatureRecommendationMessage += " - Prenez des médicaments pour réduire la fièvre.";
+            this.bodyTemperatureRecommendationMessage += " - Appliquez des compresses froides sur le front et les aisselles.";
+            this.bodyTemperatureRecommendationMessage += " - Consultez un médecin si la fièvre persiste.";
         } else {
             this.bodyTemperatureAlertMessage = "Température corporelle dans la plage normale";
             this.bodyTemperatureRecommendationMessage = "-> La température corporelle est normale.";
-            this.bodyTemperatureRecommendationMessage += "\n   a: Continuez de surveiller régulièrement votre température.";
-            this.bodyTemperatureRecommendationMessage += "\n   b: Évitez les changements brusques de température.";
-            this.bodyTemperatureRecommendationMessage += "\n   c: Prenez des mesures pour renforcer votre système immunitaire.";
+            this.bodyTemperatureRecommendationMessage += " - Continuez de surveiller régulièrement votre température.";
+            this.bodyTemperatureRecommendationMessage += " - Évitez les changements brusques de température.";
+            this.bodyTemperatureRecommendationMessage += " - Prenez des mesures pour renforcer votre système immunitaire.";
         }
 
 
@@ -197,24 +197,24 @@ public class AlertAndRecommendationServiceImpl implements AlertAndRecommendation
         // Logic for determining oxygen saturation alerts and recommendations
         // Logique pour déterminer les alertes et les recommandations de la saturation en oxygène
         if (value < 90.0) {
-            this.oxygenSaturationAlertMessage = "!!!- Saturation en oxygène trop basse";
+            this.oxygenSaturationAlertMessage = "Saturation en oxygène trop basse";
             this.oxygenSaturationRecommendationMessage = "-> La saturation en oxygène est trop basse: ";
-            this.oxygenSaturationRecommendationMessage += "\n   a: Respirez profondément et lentement.";
-            this.oxygenSaturationRecommendationMessage += "\n   b: Utilisez un concentrateur d'oxygène si disponible.";
-            this.oxygenSaturationRecommendationMessage += "\n   c: Consultez un médecin si la saturation reste basse.";
-            this.oxygenSaturationRecommendationMessage += "\n   d: Évitez l'exposition à la fumée de cigarette ou à la pollution de l'air.";
+            this.oxygenSaturationRecommendationMessage += " - Respirez profondément et lentement.";
+            this.oxygenSaturationRecommendationMessage += " - Utilisez un concentrateur d'oxygène si disponible.";
+            this.oxygenSaturationRecommendationMessage += " - Consultez un médecin si la saturation reste basse.";
+            this.oxygenSaturationRecommendationMessage += " - Évitez l'exposition à la fumée de cigarette ou à la pollution de l'air.";
         } else if (value > 100.0) {
-            this.oxygenSaturationAlertMessage = "!!!- Saturation en oxygène anormalement élevée";
+            this.oxygenSaturationAlertMessage = "Saturation en oxygène anormalement élevée";
             this.oxygenSaturationRecommendationMessage = "-> La saturation en oxygène est anormalement élevée: ";
-            this.oxygenSaturationRecommendationMessage += "\n   a: Vérifiez l'équipement de mesure.";
-            this.oxygenSaturationRecommendationMessage += "\n   b: Prenez des mesures pour réduire l'exposition à l'oxygène supplémentaire.";
-            this.oxygenSaturationRecommendationMessage += "\n   c: Consultez un médecin pour évaluer si un traitement est nécessaire.";
+            this.oxygenSaturationRecommendationMessage += " - Vérifiez l'équipement de mesure.";
+            this.oxygenSaturationRecommendationMessage += " - Prenez des mesures pour réduire l'exposition à l'oxygène supplémentaire.";
+            this.oxygenSaturationRecommendationMessage += " - Consultez un médecin pour évaluer si un traitement est nécessaire.";
         } else {
             this.oxygenSaturationAlertMessage = "Saturation en oxygène normale";
             this.oxygenSaturationRecommendationMessage = "-> La saturation en oxygène est normale.";
-            this.oxygenSaturationRecommendationMessage += "\n   a: Continuez de surveiller régulièrement votre saturation en oxygène.";
-            this.oxygenSaturationRecommendationMessage += "\n   b: Maintenez une bonne hydratation pour favoriser une meilleure oxygénation.";
-            this.oxygenSaturationRecommendationMessage += "\n   c: Évitez les efforts physiques intenses si votre saturation en oxygène est basse.";
+            this.oxygenSaturationRecommendationMessage += " - Continuez de surveiller régulièrement votre saturation en oxygène.";
+            this.oxygenSaturationRecommendationMessage += " - Maintenez une bonne hydratation pour favoriser une meilleure oxygénation.";
+            this.oxygenSaturationRecommendationMessage += " - Évitez les efforts physiques intenses si votre saturation en oxygène est basse.";
         }
 
 
